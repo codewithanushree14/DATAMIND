@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DATAMIND — Data Science Learning Game</title>
+  <meta name="description" content="Learn data science concepts by playing an educational memory match game.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/mode-selection.css">
+  <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="css/leaderboard.css">
+  <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="#" class="navbar__brand" data-nav-target="home">
+        <span class="navbar__brand-icon"><i data-lucide="brain"></i></span>
+        <span>DATAMIND</span>
+      </a>
+      <nav class="navbar__links" aria-label="Primary">
+        <a href="#" class="navlink is-active" data-nav-target="home"><span aria-hidden="true"><i
+              data-lucide="home"></i></span><span class="navlink-label">Home</span></a>
+        <a href="#" class="navlink" data-nav-target="leaderboard"><span aria-hidden="true"><i
+              data-lucide="trophy"></i></span><span class="navlink-label">Leaderboard</span></a>
+        <a href="#" class="navlink" data-nav-target="vault"><span aria-hidden="true"><i
+              data-lucide="library"></i></span><span class="navlink-label">Concept Vault</span></a>
+        <button id="nav-howto-btn" class="navlink" type="button"><span aria-hidden="true"><i
+              data-lucide="book-open"></i></span><span class="navlink-label">How to Play</span></button>
+        <button id="nav-settings-btn" class="navlink" type="button"><span aria-hidden="true"><i
+              data-lucide="settings"></i></span><span class="navlink-label">Settings</span></button>
+        <div class="navbar__toggles">
+          <div class="user-stats-nav" id="nav-user-stats"
+            style="display:flex;align-items:center;gap:8px;margin-right:12px;font-weight:700;font-size:0.9rem;background:var(--color-surface);padding:4px 10px;border-radius:20px;border:1px solid var(--color-border);">
+            <i data-lucide="star" style="color:var(--color-yellow);"></i> <span id="nav-level-badge">Lvl 1</span>
+          </div>
+          <button id="nav-sound-toggle" class="icon-btn" type="button" aria-label="Toggle sound"><i
+              data-lucide="volume-2"></i></button>
+          <button id="nav-theme-toggle" class="icon-btn" type="button" aria-label="Toggle theme"><i
+              data-lucide="moon"></i></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ==================== PAGE 1 — HOME / TOPIC SELECTION ==================== -->
+    <section class="screen is-active" data-screen="home">
+      <div class="container">
+
+        <div class="hero">
+          <span class="hero__deco hero__deco--1" aria-hidden="true"><i data-lucide="sparkles"></i></span>
+          <span class="hero__deco hero__deco--2" aria-hidden="true"><i data-lucide="bar-chart"></i></span>
+          <span class="hero__deco hero__deco--3" aria-hidden="true"><i data-lucide="microscope"></i></span>
+          <h1>Learn. <span class="accent-coral">Match.</span> <span class="accent-blue">Remember.</span></h1>
+          <p>Choose a topic to start your learning adventure!</p>
+        </div>
+
+        <h2 class="section-title">CHOOSE YOUR TOPIC</h2>
+        <div class="topic-grid" id="topic-grid"></div>
+
+        <div class="topic-select-cta" id="topic-select-cta">
+          <button class="pill-btn pill-btn--primary" id="topic-select-btn" type="button">Select Topic →</button>
+        </div>
+
+        <div class="quick-actions">
+          <button class="quick-card" type="button" id="daily-challenge-btn">
+            <span class="quick-card__icon" aria-hidden="true" style="color:var(--color-yellow);"><i
+                data-lucide="zap"></i></span>
+            <span>
+              <span class="quick-card__title" style="display:block;">Daily Challenge</span>
+              <span class="quick-card__desc" id="daily-challenge-desc">Play today's seed</span>
+            </span>
+          </button>
+          <button class="quick-card" type="button" data-open="leaderboard">
+            <span class="quick-card__icon" aria-hidden="true"><i data-lucide="trophy"></i></span>
+            <span>
+              <span class="quick-card__title" style="display:block;">Leaderboard</span>
+              <span class="quick-card__desc">View top scores</span>
+            </span>
+          </button>
+          <button class="quick-card" type="button" data-open="howto">
+            <span class="quick-card__icon" aria-hidden="true"><i data-lucide="book-open"></i></span>
+            <span>
+              <span class="quick-card__title" style="display:block;">How to Play</span>
+              <span class="quick-card__desc">Game instructions</span>
+            </span>
+          </button>
+          <button class="quick-card" type="button" data-open="settings">
+            <span class="quick-card__icon" aria-hidden="true"><i data-lucide="settings"></i></span>
+            <span>
+              <span class="quick-card__title" style="display:block;">Settings</span>
+              <span class="quick-card__desc">Game preferences</span>
+            </span>
+          </button>
+          <button class="quick-card" type="button" data-open="sound-theme">
+            <span class="quick-card__icon" aria-hidden="true"><i data-lucide="volume-2"></i></span>
+            <span>
+              <span class="quick-card__title" style="display:block;">Sound &amp; Theme</span>
+              <span class="quick-card__desc">Customize experience</span>
+            </span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== PAGE 2 — MODE SELECTION ==================== -->
+    <section class="screen" data-screen="mode-selection">
+      <div class="container">
+
+        <button class="back-btn" id="mode-back-btn" type="button" style="margin-top:20px;">
+          <span aria-hidden="true">←</span> Back
+        </button>
+
+        <div class="mode-header">
+          <div class="mode-header__icon" id="mode-topic-icon"></div>
+          <h2 id="mode-topic-title">Topic</h2>
+          <p id="mode-topic-desc">"Description"</p>
+        </div>
+
+        <div class="mode-section">
+          <div class="mode-section__title">1. Choose Difficulty</div>
+          <div class="option-grid" id="difficulty-grid"></div>
+        </div>
+
+        <div class="mode-section">
+          <div class="mode-section__title">2. Choose Timer</div>
+          <div class="option-grid" id="timer-grid"></div>
+        </div>
+
+        <div class="mode-section">
+          <div class="toggle-row">
+            <div class="toggle-card">
+              <span class="toggle-card__label"><span aria-hidden="true"><i data-lucide="lightbulb"></i></span>
+                Hints</span>
+              <button class="switch" id="hints-toggle" type="button" role="switch" aria-checked="true"></button>
+            </div>
+            <div class="toggle-card">
+              <span class="toggle-card__label"><span aria-hidden="true"><i data-lucide="book"></i></span> Learn
+                Mode</span>
+              <button class="switch" id="learnmode-toggle" type="button" role="switch" aria-checked="true"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mode-cta">
+          <button class="pill-btn pill-btn--primary" id="start-game-btn" type="button">
+            <span aria-hidden="true">▶</span> START GAME
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== PAGE 3 — FLIP CARD GAME ==================== -->
+    <section class="screen" data-screen="game" id="game-screen">
+      <div class="container">
+
+        <div class="game-topbar">
+          <button class="back-btn" id="game-back-btn" type="button" aria-label="Back to mode selection">
+            <span aria-hidden="true">←</span>
+          </button>
+          <div class="game-topbar__title" id="game-title"></div>
+          <div class="game-topbar__actions">
+            <button class="icon-btn hint-btn" id="hint-btn" type="button" aria-label="Use a hint">
+              <i data-lucide="lightbulb"></i><span class="hint-btn__count" id="hint-count-badge">2</span>
+            </button>
+            <button class="icon-btn" id="game-settings-btn" type="button" aria-label="Open settings"><i
+                data-lucide="settings"></i></button>
+          </div>
+        </div>
+
+        <div class="hud">
+          <div class="hud-stat hud-stat--time" id="hud-time-wrap">
+            <div class="hud-stat__label"><i data-lucide="clock"></i> Time</div>
+            <div class="hud-stat__value" id="hud-time">00:00</div>
+          </div>
+          <div class="hud-stat hud-stat--score">
+            <div class="hud-stat__label"><i data-lucide="star"></i> Score</div>
+            <div class="hud-stat__value" id="hud-score">0</div>
+          </div>
+          <div class="hud-stat hud-stat--moves">
+            <div class="hud-stat__label"><i data-lucide="target"></i> Moves</div>
+            <div class="hud-stat__value" id="hud-moves">0</div>
+          </div>
+          <div class="hud-stat hud-stat--streak">
+            <div class="hud-stat__label"><i data-lucide="flame"></i> Streak</div>
+            <div class="hud-stat__value" id="hud-streak">0</div>
+          </div>
+          <div class="hud-stat hud-stat--accuracy">
+            <div class="hud-stat__label"><i data-lucide="bar-chart"></i> Accuracy</div>
+            <div class="hud-stat__value" id="hud-accuracy">100%</div>
+          </div>
+        </div>
+
+        <div class="card-grid" id="card-grid" data-cols="4"></div>
+
+        <div class="game-footer">
+          <button class="badge" id="game-sound-badge" type="button"
+            style="background:var(--color-green-soft);color:var(--color-green);border:none;"><i
+              data-lucide="volume-2"></i> Sound ON</button>
+          <div class="progress-track">
+            <div class="progress-track__fill" id="progress-fill" style="width:0%"></div>
+          </div>
+          <span class="progress-label" id="progress-label">Pairs Found: 0 / 0</span>
+          <span class="badge" id="game-learn-badge"
+            style="background:var(--color-purple-soft);color:var(--color-purple);">Learn Mode ON</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== PAGE 6 — LEADERBOARD ==================== -->
+    <section class="screen" data-screen="leaderboard">
+      <div class="container">
+        <div class="leaderboard-head">
+          <h2><span aria-hidden="true"><i data-lucide="trophy"></i></span> Leaderboard</h2>
+          <button class="pill-btn pill-btn--outline-coral" id="clear-leaderboard-btn" type="button"><i
+              data-lucide="trash-2"></i> Clear
+            All</button>
+        </div>
+
+        <div id="user-rank-banner"
+          style="margin-bottom: var(--space-4); display: none; align-items: center; justify-content: space-between; background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4);">
+        </div>
+
+        <div class="leaderboard-tabs" id="leaderboard-tabs"
+          style="display:flex; gap:10px; justify-content:center; margin-bottom:var(--space-4);">
+          <button class="pill-btn pill-btn--primary" data-tab="all-time">All-Time</button>
+          <button class="pill-btn pill-btn--ghost" data-tab="weekly">Weekly</button>
+          <button class="pill-btn pill-btn--ghost" data-tab="today">Today</button>
+        </div>
+
+        <div class="leaderboard-table-wrap">
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Player</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+                <th>Score</th>
+                <th>XP</th>
+                <th class="hide-mobile">Time</th>
+                <th class="hide-mobile">Accuracy</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-body"></tbody>
+          </table>
+        </div>
+
+        <p class="leaderboard-footer-note">
+          <span aria-hidden="true"><i data-lucide="info"></i></span> Leaderboard scores are saved locally on your
+          device.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE 7 — CONCEPT VAULT ==================== -->
+    <section class="screen" data-screen="vault">
+      <div class="container">
+        <div class="vault-header" style="text-align:center; margin-bottom:var(--space-4);">
+          <h2><span aria-hidden="true"><i data-lucide="library"></i></span> Concept Vault</h2>
+          <p style="color:var(--color-text-soft);">Review your mastery of all data science concepts.</p>
+        </div>
+
+        <div class="vault-toolbar"
+          style="display:flex; flex-direction:column; gap:var(--space-4); margin-bottom:var(--space-5);">
+          <!-- Search Bar -->
+          <div class="vault-search" style="position:relative; max-width:600px; margin:0 auto; width:100%;">
+            <i data-lucide="search"
+              style="position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--color-text-soft);"></i>
+            <input type="text" id="vault-search-input" placeholder="Search concepts, definitions, or categories..."
+              style="width:100%; padding:14px 16px 14px 48px; border-radius:var(--radius-pill); border:2px solid var(--color-border); background:var(--color-surface); font-size:1rem; font-family:var(--font-body); color:var(--color-text); outline:none; transition:border-color var(--dur-fast) var(--ease-out); box-shadow:var(--shadow-sm);" />
+          </div>
+
+          <!-- Category Tabs -->
+          <div class="vault-tabs-wrapper" style="overflow-x:auto; padding-bottom:8px; margin:0 -20px; padding:0 20px;">
+            <div class="vault-tabs" id="vault-tabs" style="display:flex; gap:10px; width:max-content; margin:0 auto;">
+              <!-- Tabs generated here -->
+            </div>
+          </div>
+        </div>
+
+        <div class="vault-content" id="vault-content">
+          <!-- Category sections or search results generated here -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="modal-overlay" id="modal-overlay"></div>
+  <div class="toast-shell" id="toast" role="status" aria-live="polite"></div>
+  <div class="streak-toast" id="streak-toast" aria-live="polite"></div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

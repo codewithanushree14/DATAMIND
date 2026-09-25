@@ -1,0 +1,250 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 20, 31, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+.modal-overlay.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.game-blur {
+  filter: blur(4px) brightness(0.9);
+  pointer-events: none;
+}
+
+.modal {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  max-width: 480px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: var(--space-6);
+  transform: translateY(24px) scale(0.96);
+  opacity: 0;
+  transition: all var(--dur-base) var(--ease-bounce);
+}
+.modal-overlay.is-visible .modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.modal--wide {
+  max-width: 640px;
+}
+.modal--sheet {
+  max-width: 900px;
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+}
+
+/* Match found / learn mode */
+.match-modal {
+  text-align: center;
+}
+.match-modal__badge {
+  font-size: 2.4rem;
+  margin-bottom: var(--space-2);
+}
+.match-modal__title {
+  color: var(--color-success);
+  font-size: 1.4rem;
+}
+
+.match-modal__pair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin: var(--space-5) 0;
+}
+.match-modal__concept {
+  background: var(--color-bg-dotted);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  min-width: 130px;
+}
+.match-modal__concept .icon {
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+}
+.match-modal__concept .label {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.match-modal__arrow {
+  font-size: 1.3rem;
+  color: var(--color-text-faint);
+}
+
+.match-modal__explainer {
+  background: var(--color-blue-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.match-modal__cta {
+  margin-top: var(--space-5);
+  width: 100%;
+  justify-content: center;
+}
+
+/* Game complete */
+.complete-modal {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.complete-modal__trophy {
+  font-size: 3.5rem;
+  margin: var(--space-2) 0;
+  animation: trophyPop 0.6s var(--ease-bounce);
+}
+@keyframes trophyPop {
+  0% {
+    transform: scale(0) rotate(-15deg);
+  }
+  60% {
+    transform: scale(1.15) rotate(6deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+.complete-modal__title {
+  font-size: 1.8rem;
+  color: var(--color-purple);
+}
+.complete-modal__subtitle {
+  color: var(--color-text-soft);
+  margin-top: 4px;
+}
+
+.complete-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin: var(--space-5) 0;
+}
+.complete-stats div {
+  background: var(--color-bg-dotted);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+.complete-stats .stat-label {
+  font-size: 0.68rem;
+  color: var(--color-text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.complete-stats .stat-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-top: 2px;
+}
+
+.name-entry {
+  margin-top: var(--space-5);
+  text-align: left;
+}
+.name-entry label {
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: var(--space-2);
+}
+.name-entry-row {
+  display: flex;
+  gap: var(--space-3);
+}
+.name-input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-bg-dotted);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 10px 18px;
+}
+.name-input input {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 0.95rem;
+}
+.name-input:focus-within {
+  border-color: var(--color-blue);
+}
+
+.complete-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+.complete-actions .pill-btn {
+  padding: 12px 8px;
+  font-size: 0.85rem;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -10px;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+  z-index: 1;
+}
+@keyframes confettiFall {
+  to {
+    transform: translateY(420px) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+/* game over (time up) */
+.gameover-modal {
+  text-align: center;
+}
+.gameover-modal__icon {
+  font-size: 3rem;
+}
+.gameover-modal__title {
+  font-size: 1.5rem;
+  color: var(--color-coral);
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 520px) {
+  .complete-actions {
+    grid-template-columns: 1fr;
+  }
+  .complete-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .name-entry-row {
+    flex-direction: column;
+  }
+}

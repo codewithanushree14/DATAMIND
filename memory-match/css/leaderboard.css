@@ -1,0 +1,81 @@
+.leaderboard-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) 0;
+}
+.leaderboard-head h2 { display: flex; align-items: center; gap: 10px; font-size: 1.5rem; }
+
+.leaderboard-tabs {
+  display: inline-flex;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  margin-bottom: var(--space-5);
+}
+.leaderboard-tabs button {
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+}
+.leaderboard-tabs button.is-active { background: var(--color-blue); color: var(--color-primary-text); }
+
+.leaderboard-table-wrap {
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.leaderboard-table-wrap { overflow-x: auto; }
+
+.leaderboard-table { width: 100%; border-collapse: collapse; }
+
+.leaderboard-table th {
+  text-align: left;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 2px solid var(--color-border);
+}
+.leaderboard-table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+}
+.leaderboard-table tr:last-child td { border-bottom: none; }
+.leaderboard-table tbody tr:hover { background: var(--color-bg-dotted); }
+.leaderboard-table tr.is-current-user { background: var(--color-blue-soft); }
+.leaderboard-table tr.is-current-user td { font-weight: 700; color: var(--color-blue); }
+
+.lb-rank { font-family: var(--font-display); font-weight: 800; display: inline-flex; align-items: center; justify-content: center; min-width: 24px; }
+.lb-rank--1 { color: var(--color-yellow); }
+.lb-rank--2 { color: #A0A7B8; }
+.lb-rank--3 { color: #C97B4C; }
+
+.leaderboard-empty {
+  text-align: center;
+  padding: var(--space-8) var(--space-5);
+  color: var(--color-text-soft);
+}
+.leaderboard-empty .icon { font-size: 2.4rem; margin-bottom: var(--space-3); }
+
+.leaderboard-footer-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  margin-top: var(--space-5);
+  font-size: 0.82rem;
+  color: var(--color-text-faint);
+}
+
+@media (max-width: 640px) {
+  .leaderboard-head { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  .hide-mobile { display: none; }
+}

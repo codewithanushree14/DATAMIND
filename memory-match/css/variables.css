@@ -1,0 +1,124 @@
+/* ==========================================================================
+   DESIGN TOKENS
+   ========================================================================== */
+:root {
+  /* -- Light theme (default) -- */
+  --color-bg: #FBF7EE;
+  --color-bg-dotted: #F3ECDC;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #FFFDF8;
+  --color-border: #EBE2CC;
+  --color-border-strong: #1F2A44;
+
+  --color-text: #1F2A44;
+  --color-text-soft: #5B6478;
+  --color-text-faint: #9AA0AF;
+
+  --color-blue: #3B6CF6;
+  --color-blue-soft: #E7EDFF;
+  --color-green: #22B573;
+  --color-green-soft: #E4F8EE;
+  --color-purple: #8B5CF6;
+  --color-purple-soft: #F1EBFF;
+  --color-coral: #F0563E;
+  --color-coral-soft: #FDEAE6;
+  --color-yellow: #F5B942;
+  --color-yellow-soft: #FEF3DD;
+  --color-teal: #2FB6C4;
+  --color-teal-soft: #E3F6F8;
+
+  --color-card-front: #2FB6C4;
+  --color-card-front-dark: #1E93A0;
+
+  --color-success: #22B573;
+  --color-danger: #F0563E;
+
+  /* Fonts */
+  --font-display: 'Fredoka', 'Poppins', sans-serif;
+  --font-body: 'Poppins', 'Nunito', sans-serif;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(31, 42, 68, 0.08);
+  --shadow-md: 0 12px 32px rgba(31, 42, 68, 0.12);
+  --shadow-lg: 0 24px 64px rgba(31, 42, 68, 0.16);
+  --shadow-card: 0 8px 0 rgba(31, 42, 68, 0.1), 0 16px 40px rgba(31, 42, 68, 0.12);
+  --shadow-glow-blue: 0 0 20px var(--color-blue-soft);
+  --shadow-glow-green: 0 0 20px var(--color-green-soft);
+  
+  /* Gradients */
+  --grad-primary: linear-gradient(135deg, var(--color-blue) 0%, var(--color-purple) 100%);
+  --grad-success: linear-gradient(135deg, var(--color-green) 0%, var(--color-teal) 100%);
+  --grad-warning: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-coral) 100%);
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --color-primary-text: #FFFFFF;
+  --color-knob: #FFFFFF;
+
+  /* Layout */
+  --container-width: 1200px;
+  --nav-height: 76px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+  --dur-slow: 450ms;
+}
+
+/* -- Dark theme -- */
+[data-theme="dark"] {
+  --color-bg: #12141F;
+  --color-bg-dotted: #171A29;
+  --color-surface: #1B1E2E;
+  --color-surface-alt: #20233533;
+  --color-border: #2C3049;
+  --color-border-strong: #E9ECF7;
+
+  --color-text: #EDEFF7;
+  --color-text-soft: #A6ABC1;
+  --color-text-faint: #6B7086;
+
+  --color-blue: #6C8CFB;
+  --color-blue-soft: #212B4C;
+  --color-green: #3FD08E;
+  --color-green-soft: #14332A;
+  --color-purple: #A78BFA;
+  --color-purple-soft: #2B2347;
+  --color-coral: #FF7A63;
+  --color-coral-soft: #3A2320;
+  --color-yellow: #F8C765;
+  --color-yellow-soft: #3A2E12;
+  --color-teal: #4FD0DD;
+  --color-teal-soft: #113338;
+
+  --color-card-front: #1E93A0;
+  --color-card-front-dark: #146772;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 6px 0 rgba(0, 0, 0, 0.35), 0 10px 24px rgba(0, 0, 0, 0.35);
+
+  --glass-bg: rgba(27, 30, 46, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --color-primary-text: #12141F;
+  --color-knob: #EDEFF7;
+}
